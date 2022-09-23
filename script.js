@@ -3,6 +3,7 @@ const currentPlayer = document.querySelector(".currentPlayer");
 let selected;
 let player = "x";
 
+
 let positions = [
     [1, 2, 3],
     [4, 5, 6],
@@ -30,19 +31,19 @@ init();
 function newMove(e) {
     const index = e.target.getAttribute("data-i");
     e.target.innerHTML = player;
-    e.target.removedEventListener("click", newMove);
+    e.target.removeEventListener("click", newMove);
     selected[index] = player;
 
     setTimeout(() => {
         check();
     },  [100]);
 
-    player = player === "x" ? "O" : "x";
+    player = player === "x" ? "o" : "x";
     currentPlayer.innerHTML = `JOGADOR DA VEZ: ${player}`;
 }
 
 function check() {
-    let playerLastMove = player ==="X" ? "O" : "X";
+    let playerLastMove = player === "x" ? "o" : "x";
 
 const items = selected
    .map((item, i) => [item, i])
@@ -51,8 +52,9 @@ const items = selected
     
    for (pos of positions) {
     if (pos.every((item) => items.includes(item))) {
-        alert("O JOGADOR '" + playerLastMove + "' GANHOU!");
+        alert(" O Jogador  "  + playerLastMove + "  ganhou! Parabéns!");
         init();
         rerturn;
     }
-   }
+}
+}
